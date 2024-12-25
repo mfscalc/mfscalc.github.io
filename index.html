@@ -1,0 +1,352 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MFS Calc</title>
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: sans-serif
+        }
+
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            background: linear-gradient(90deg, #375f54, #724860);
+        }
+
+        .container {
+            background: transparent;
+            border-radius: 10px;
+            box-shadow: 0 3px 15px rgba(0, 0, 0, 0.2);
+            padding: 20px;
+            max-width: 600px;
+            width: 100%;
+            text-align: center;
+        }
+
+        header {
+            width: 100%;
+            background: #375f54;
+            padding: 10px 0;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            position: fixed;
+            top: 0;
+            left: 0;
+        }
+
+        .nav-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        .logo {
+            color: white;
+            text-decoration: none;
+            font-size: 24px;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 15px;
+        }
+
+        .nav-links a {
+            color: white;
+            text-decoration: none;
+            font-size: 16px;
+            padding: 8px 12px;
+            border-radius: 5px;
+            transition: background 0.3s;
+        }
+
+        .nav-links a:hover {
+            background: rgba(255, 255, 255, 0.2);
+        }
+
+        .menu-icon {
+            display: none;
+            cursor: pointer;
+        }
+
+        .menu-icon div {
+            width: 25px;
+            height: 3px;
+            background: white;
+            margin: 5px;
+            transition: all 0.3s;
+        }
+
+        .container {
+            margin-top: 80px; /* To ensure it doesn't overlap with the fixed navbar */
+        }
+
+        .result {
+            font-size: 24px;
+            margin-bottom: 20px;
+            color: #ffffff;
+        }
+
+        input[type="number"] {
+            background: wheat;
+            width: calc(100% - 20px);
+            padding: 10px;
+            margin-bottom: 20px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            font-size: 20px;
+        }
+
+        button {
+            width: 100px;
+            height: 48px;
+            margin: 5px;
+            border: none;
+            border-radius: 8px;
+            font-size: 16px;
+            cursor: pointer;
+            transition: background 0.3s;
+        }
+
+        button.Bkash {
+            background-color: #f543e6;
+            color: white;
+        }
+
+        button.Nagad {
+            background-color: #ffab0f;
+            color: #1a1f29;
+        }
+
+        button.Rocket {
+            background-color: #d11aff;
+            color: #fff;
+        }
+
+        button:hover {
+            opacity: 0.8;
+        }
+
+        button#clearButton {
+            background-color: red;
+            color: #fff;
+        }
+
+        h1, h2, h4 {
+                color: white;
+            }
+
+        @media (max-width: 768px) {
+            .container {
+                padding: 15px;
+            }
+
+            h1, h2, h4 {
+                font-size: 18px;
+                text;
+            }
+
+            .result {
+                font-size: 20px;
+            }
+
+            button {
+                width: 90px;
+                height: 35px;
+                font-size: 12px;
+            }
+
+            }
+
+            .nav-links {
+                display: none;
+                flex-direction: column;
+                gap: 0;
+                background: #375f54;
+                position: absolute;
+                top: 60px;
+                right: 0;
+                width: 100%;
+                text-align: center;
+            }
+
+            .nav-links a {
+                padding: 15px;
+                border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+            }
+
+            .nav-links.show {
+                display: flex;
+            }
+
+            .menu-icon {
+                display: block;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .container {
+                padding: 10px;
+            }
+
+           h1, h2, h4 {
+
+                font-size: 16px;
+                color: white;
+            }
+
+            .result {
+                font-size: 24px;
+            }
+
+            button {
+                width: 85px;
+                height: 45px;
+                font-size: 12px;
+            }
+
+            input[type="number"] {
+                padding: 6px;
+                font-size: 14px;
+            }
+        }
+    </style>
+</head>
+<body> 
+
+<header>
+    <div class="nav-container">
+        <a href="#" class="logo">MFS<span>~</span>Calc</a>
+        <div class="menu-icon" onclick="toggleMenu()">
+            <div></div>
+            <div></div>
+            <div></div>
+        </div>
+        <div class="nav-links">
+            <a href="home.html">Home</a>
+            <a href="home.html">Contact</a>
+            <a href="https://github.com/nh-404/MFS-Calculator/releases/download/v1.1.4/MFS.Calculatior_v1.1.4.apk">Download APP</a>
+        
+        </div>
+    </div>
+</header>
+
+<div class="container">
+    <form id="mfsForm">
+        <div class="result">
+            <h1>Total cashout charge is: <span id="result">0</span></h1>
+        </div>
+
+        <input type="number" id="number1" name="number1" placeholder="Enter cashout amount">
+
+        <h2>Press on your desired MFS button</h2>
+
+        <h4>Cashout charge [USSD code]</h4>
+        <div>
+            <button type="button" data-rate="0.0185" data-type="Bkash [*247#]" class="calcButton Bkash">Bkash [*247#]</button>
+            <button type="button" data-rate="0.0150" data-type="Nagad [*167#]" class="calcButton Nagad">Nagad [*167#]</button>
+            <button type="button" data-rate="0.018" data-type="Rocket [*322#]" class="calcButton Rocket">Rocket [*322#]</button>
+        </div>
+
+        <h4>Cashout charge [APP]</h4>
+        <div>
+            <button type="button" data-rate="0.0185" data-type="Bkash [APP]" class="calcButton Bkash">Bkash [App]</button>
+            <button type="button" data-rate="0.01250" data-type="Nagad [APP]" class="calcButton Nagad">Nagad [App]</button>
+            <button type="button" data-rate="0.018" data-type="Rocket [APP]" class="calcButton Rocket">Rocket [App]</button>
+        </div>
+
+        <h4>Cashout charge [Other]</h4>
+        <div>
+            <button type="button" data-rate="0.009" data-type="Rocket [ATM]" class="calcButton Rocket">Rocket [ATM]</button>
+            <button type="button" data-rate="0.014900" data-type="Bkash [fav agent]" class="calcButton Bkash">Bkash [Fav]</button>
+            <button type="button" data-rate="0.014900" data-type="Bkash [ATM]" class="calcButton Bkash">Bkash [ATM]</button>
+        </div>
+
+        <h4>MFS To Bank transfer charge</h4>
+        <div>
+            <button type="button" data-rate="0.0125" data-type="Bkash [Bank]" class="calcButton Bkash">Bkash [All Bank]</button>
+            <button type="button" data-rate="0.0115" data-type="Bkash [Brac]" class="calcButton Bkash">Bkash [Brac]</button>
+            <button type="button" data-rate="0.0150" data-type="Nagad [Bank]" class="calcButton Nagad">Nagad [Bank]</button>
+        </div>
+
+        <button type="button" id="clearButton">Clear Result</button>
+    </form>
+</div>
+
+
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        const resultSpan = document.getElementById('result');
+        const clearButton = document.getElementById('clearButton');
+        const calcButtons = document.querySelectorAll('.calcButton');
+    
+        calcButtons.forEach(button => {
+            button.addEventListener('click', function() {
+                const rate = parseFloat(this.getAttribute('data-rate'));
+                const amountInput = document.getElementById('number1').value;
+                const amount = parseFloat(amountInput);
+    
+                // Check if the input is empty
+                if (amountInput.trim() === '') {
+                    alert('Please enter an amount');
+                    return;
+                }
+    
+                // Check if the input is a valid number
+                if (isNaN(amount)) {
+                    alert('Please enter a valid number');
+                    return;
+                }
+    
+                // Check if the input contains a decimal point
+                if (amountInput.includes('.')) {
+                    resultSpan.textContent = '0'; // Display 0 if there's a decimal point
+                    return; // Exit the function to prevent further calculations
+                }
+    
+                // Check if the amount is negative
+                if (amount < 0) {
+                    alert('Amount cannot be negative');
+                    return;
+                }
+    
+                // Check if the amount is a valid number greater than zero
+                if (amount === 0) {
+                    resultSpan.textContent = '0'; // Show 0 if the amount is 0
+                    return;
+                }
+    
+                // Perform the calculation
+                let result = (amount * rate).toFixed(2);
+    
+                // Display the result
+                resultSpan.textContent = `${result} Tk ${this.getAttribute('data-type')}`;
+            });
+        });
+    
+        clearButton.addEventListener('click', function() {
+            resultSpan.textContent = '0';
+            document.getElementById('number1').value = '';
+        });
+    });
+    
+    function toggleMenu() {
+        const navLinks = document.querySelector('.nav-links');
+        navLinks.classList.toggle('show');
+    }
+    
+    
+</script>
+
+</body>
+</html>
