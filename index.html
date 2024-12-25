@@ -47,6 +47,10 @@
       text-align: center;
     }
 
+    #hero h1 {
+      font-size: 3rem;
+    }
+
     #about .feature i {
       font-size: 2.5rem;
       color: #82cfff;
@@ -54,41 +58,41 @@
     }
 
     footer {
-        background: #1c1c1c;
-        color: #fff;
-        padding: 20px 0;
-        text-align: center;
-      }
-    
-      footer p {
-        margin: 0;
-        font-size: 0.9rem;
-      }
-    
-      footer .social-links {
-        margin-top: 10px;
-      }
-    
-      footer .social-links a {
-        color: #fff;
-        margin: 0 10px;
-        font-size: 1.4rem;
-        transition: color 0.3s;
-      }
-    
-      footer .social-links a:hover {
-        color: #82cfff;
-      }
-    
-      footer a {
-        color: #007bff;
-        text-decoration: none;
-        font-weight: 500;
-      }
-    
-      footer a:hover {
-        text-decoration: underline;
-      }
+      background: #1c1c1c;
+      color: #fff;
+      padding: 20px 0;
+      text-align: center;
+    }
+
+    footer p {
+      margin: 0;
+      font-size: 0.9rem;
+    }
+
+    footer .social-links {
+      margin-top: 10px;
+    }
+
+    footer .social-links a {
+      color: #fff;
+      margin: 0 10px;
+      font-size: 1.4rem;
+      transition: color 0.3s;
+    }
+
+    footer .social-links a:hover {
+      color: #82cfff;
+    }
+
+    footer a {
+      color: #007bff;
+      text-decoration: none;
+      font-weight: 500;
+    }
+
+    footer a:hover {
+      text-decoration: underline;
+    }
 
     /* Light Mode Adjustments */
     body.light-mode #header {
@@ -131,6 +135,29 @@
     #scrollToTopBtn:hover {
       background-color: #0056b3;
     }
+
+    /* Mobile Responsiveness */
+    @media (max-width: 767px) {
+      #hero h1 {
+        font-size: 2.5rem;
+      }
+
+      #hero p {
+        font-size: 1.1rem;
+      }
+
+      #downloadApp .btn {
+        width: 100%;
+      }
+
+      #about .feature i {
+        font-size: 2rem;
+      }
+
+      footer .social-links a {
+        font-size: 1.2rem;
+      }
+    }
   </style>
 </head>
 
@@ -143,13 +170,13 @@
       <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
         <span class="navbar-toggler-icon"></span>
       </button>
-      <div class="collapse navbar-collapse" id="navbarNav">
+      <div class="collapse navbar-collapse p-4" id="navbarNav">
         <ul class="navbar-nav ms-auto">
           <li class="nav-item"><a class="nav-link" href="#hero">Home</a></li>
           <li class="nav-item"><a class="nav-link" href="#about">Contact</a></li>
+          <li class="nav-item btn btn-outline-light ms-3"id="darkModeToggle">☀️ Light Mode</li>
         </ul>
       </div>
-      <button id="darkModeToggle" class="btn btn-outline-light ms-3">☀️ Light Mode</button>
     </nav>
   </header>
 
