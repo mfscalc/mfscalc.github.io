@@ -5,9 +5,9 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>MFS Calc</title>
 
-  <!-- Tailwind CDN -->
-   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"/>
+  <!-- Tailwind & Font Awesome -->
   <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"/>
 
   <script>
     tailwind.config = {
@@ -29,30 +29,32 @@ bg-gradient-to-br from-teal-50 via-white to-blue-100
 dark:from-gray-900 dark:via-slate-800 dark:to-black 
 text-gray-800 dark:text-gray-200">
 
-<!-- Navbar -->
+<!-- ===== Header ===== -->
 <header class="bg-primary dark:bg-gray-800 sticky top-0 z-50 shadow">
   <nav class="max-w-6xl mx-auto flex justify-between items-center px-4 py-3">
 
-    <h1 class="text-white font-semibold">MFS~Calc</h1>
+    <h1 class="text-white font-semibold text-lg md:text-xl">MFS~Calc</h1>
 
     <div class="flex items-center gap-3">
-      <button id="themeToggle" class="text-white text-lg">🌙</button>
-      <button id="menuBtn" class="md:hidden text-white text-xl">☰</button>
+      <button id="themeToggle" class="text-white text-lg transition-transform duration-200" aria-label="Toggle Dark/Light Mode">🌙</button>
+      <button id="menuBtn" class="md:hidden text-white text-2xl transition-transform duration-200" aria-label="Toggle Menu" aria-expanded="false">☰</button>
     </div>
 
+    <!-- Desktop Menu -->
     <div class="hidden md:flex gap-6 text-white text-sm">
       <a href="index.html" class="hover:text-white transition-colors duration-200">Home</a>
       <a href="contact.html" class="hover:text-white transition-colors duration-200">Contact</a>
     </div>
   </nav>
 
-    <div id="mobileMenu" class="md:hidden hidden bg-primary dark:bg-gray-800 px-5 pb-4 pt-2 shadow-inner">
-      <a href="index.html" class="block py-2 text-white/90 hover:text-white">Home</a>
-      <a href="contact.html" class="block py-2 text-white font-medium">Contact</a>
-    </div>
+  <!-- Mobile Menu -->
+  <div id="mobileMenu" class="md:hidden hidden bg-primary dark:bg-gray-800 px-5 pb-4 pt-2 shadow-inner transition-all duration-300">
+    <a href="index.html" class="block py-2 text-white/90 hover:text-white">Home</a>
+    <a href="contact.html" class="block py-2 text-white font-medium hover:text-white/90">Contact</a>
+  </div>
 </header>
 
-<!-- Main -->
+<!-- ===== Main Content ===== -->
 <div class="pt-24 px-4 flex justify-center">
   <div class="w-full max-w-md 
     bg-white/80 dark:bg-gray-900/80 
@@ -63,9 +65,7 @@ text-gray-800 dark:text-gray-200">
       <h1 class="text-gray-800 dark:text-white text-lg md:text-xl font-semibold">
         Total charge:
       </h1>
-      <p id="result" class="text-2xl font-bold text-gray-900 dark:text-white mt-2">
-        0
-      </p>
+      <p id="result" class="text-2xl font-bold text-gray-900 dark:text-white mt-2">0</p>
     </div>
 
     <!-- Input -->
@@ -98,7 +98,7 @@ text-gray-800 dark:text-gray-200">
         <div class="grid grid-cols-3 gap-2">
           <button data-rate="0.0185" data-type="Bkash [APP]" class="calcButton bg-pink-600 text-white p-3 rounded-lg">Bkash</button>
           <button data-rate="0.0125" data-type="Nagad [APP]" class="calcButton bg-orange-600 text-black p-3 rounded-lg">Nagad</button>
-          <button data-rate="0.018"  data-type="Rocket [APP]"class="calcButton bg-purple-900 text-white p-3 rounded-lg">Rocket</button>
+          <button data-rate="0.018" data-type="Rocket [APP]" class="calcButton bg-purple-900 text-white p-3 rounded-lg">Rocket</button>
         </div>
       </div>
 
@@ -106,7 +106,7 @@ text-gray-800 dark:text-gray-200">
       <div>
         <p class="text-gray-600 dark:text-gray-400 text-sm mb-2">Other</p>
         <div class="grid grid-cols-3 gap-2">
-          <button data-rate="0.009"  data-type="Rocket [ATM]" class="calcButton bg-purple-900 text-white p-3 rounded-lg">Rocket ATM</button>
+          <button data-rate="0.009" data-type="Rocket [ATM]" class="calcButton bg-purple-900 text-white p-3 rounded-lg">Rocket ATM</button>
           <button data-rate="0.0149" data-type="Bkash [Fav]" class="calcButton bg-pink-600 text-white p-3 rounded-lg">Bkash Fav</button>
           <button data-rate="0.0149" data-type="Bkash [ATM]" class="calcButton bg-pink-600 text-white p-3 rounded-lg">Bkash ATM</button>
         </div>
@@ -116,122 +116,102 @@ text-gray-800 dark:text-gray-200">
       <div>
         <p class="text-gray-600 dark:text-gray-400 text-sm mb-2">Bank Transfer</p>
         <div class="grid grid-cols-2 gap-2">
-          <button data-rate="0.0125" data-type="Bkash To [Other Bank]"class="calcButton bg-pink-600 text-white p-3 rounded-lg">Bkash To [Other Bank]</button>
+          <button data-rate="0.0125" data-type="Bkash To [Other Bank]" class="calcButton bg-pink-600 text-white p-3 rounded-lg">Bkash To [Other Bank]</button>
           <button data-rate="0.0115" data-type="Bkash To [BRAC]" class="calcButton bg-pink-600 text-white p-3 rounded-lg">Bkash To [BRAC]</button>
-          <button data-rate="0.015"  data-type="Nagad To [Bank]" class="calcButton bg-orange-600 text-black p-3 rounded-lg">Nagad To [Bank]</button>
+          <button data-rate="0.015" data-type="Nagad To [Bank]" class="calcButton bg-orange-600 text-black p-3 rounded-lg">Nagad To [Bank]</button>
           <button data-rate="0.0850" data-type="Bkash To [NPSB]" class="calcButton bg-pink-600 text-white p-3 rounded-lg">Bkash NPSB</button>
         </div>
       </div>
 
     </div>
 
-    <!-- Clear -->
-<button id="clearButton" class="w-full mt-5 bg-red-900 text-white p-3 rounded-lg flex items-center justify-center gap-2">
-  <i class="fas fa-trash"></i> <!-- Icon -->
-  Clear
-</button>
+    <!-- Clear Button -->
+    <button id="clearButton" class="w-full mt-5 bg-red-900 text-white p-3 rounded-lg flex items-center justify-center gap-2">
+      <i class="fas fa-trash"></i>
+      Clear
+    </button>
 
   </div>
 </div>
 
-
+<!-- ===== Scripts ===== -->
 <script>
-// Theme Load
-(function () {
-  const savedTheme = localStorage.getItem("theme");
-
-  if (
-    savedTheme === "dark" ||
-    (!savedTheme && window.matchMedia("(prefers-color-scheme: dark)").matches)
-  ) {
-    document.documentElement.classList.add("dark");
-    document.getElementById("themeToggle").textContent = "☀️";
-  }
-})();
-
-// Toggle Theme
-function toggleTheme() {
+  // ===== Theme Toggle =====
+  const themeBtn = document.getElementById("themeToggle");
   const html = document.documentElement;
-  const btn = document.getElementById("themeToggle");
 
-  if (html.classList.contains("dark")) {
-    html.classList.remove("dark");
-    localStorage.setItem("theme", "light");
-    btn.textContent = "🌙";
-  } else {
-    html.classList.add("dark");
-    localStorage.setItem("theme", "dark");
-    btn.textContent = "☀️";
-  }
-}
+  (function () {
+    const savedTheme = localStorage.getItem("theme");
+    if (savedTheme === "dark" || (!savedTheme && window.matchMedia("(prefers-color-scheme: dark)").matches)) {
+      html.classList.add("dark");
+      themeBtn.textContent = "☀️";
+    } else {
+      themeBtn.textContent = "🌙";
+    }
+  })();
 
-// Mobile Menu
-function toggleMenu() {
-  document.getElementById('mobileMenu').classList.toggle('hidden');
-}
+  themeBtn.addEventListener("click", () => {
+    if (html.classList.contains("dark")) {
+      html.classList.remove("dark");
+      localStorage.setItem("theme", "light");
+      themeBtn.textContent = "🌙";
+    } else {
+      html.classList.add("dark");
+      localStorage.setItem("theme", "dark");
+      themeBtn.textContent = "☀️";
+    }
+  });
 
-// Calculator Logic
-    document.addEventListener('DOMContentLoaded', function() {
-        const resultSpan = document.getElementById('result');
-        const clearButton = document.getElementById('clearButton');
-        const calcButtons = document.querySelectorAll('.calcButton');
-    
-        calcButtons.forEach(button => {
-            button.addEventListener('click', function() {
-                const rate = parseFloat(this.getAttribute('data-rate'));
-                const amountInput = document.getElementById('number1').value;
-                const amount = parseFloat(amountInput);
-    
-                // Check if the input is empty
-                if (amountInput.trim() === '') {
-                    alert('Please enter an amount');
-                    return;
-                }
-    
-                // Check if the input is a valid number
-                if (isNaN(amount)) {
-                    alert('Please enter a valid number');
-                    return;
-                }
-    
-                // Check if the input contains a decimal point
-                if (amountInput.includes('.')) {
-                    resultSpan.textContent = '0'; // Display 0 if there's a decimal point
-                    return; // Exit the function to prevent further calculations
-                }
-    
-                // Check if the amount is negative
-                if (amount < 0) {
-                    alert('Amount cannot be negative');
-                    return;
-                }
-    
-                // Check if the amount is a valid number greater than zero
-                if (amount === 0) {
-                    resultSpan.textContent = '0'; // Show 0 if the amount is 0
-                    return;
-                }
-    
-                // Perform the calculation
-                let result = (amount * rate).toFixed(2);
-    
-                // Display the result
-                resultSpan.textContent = `${result} Tk ${this.getAttribute('data-type')}`;
-            });
-        });
-    
-        clearButton.addEventListener('click', function() {
-            resultSpan.textContent = '0';
-            document.getElementById('number1').value = '';
-        });
+  // ===== Mobile Menu =====
+  const menuBtn = document.getElementById("menuBtn");
+  const mobileMenu = document.getElementById("mobileMenu");
+
+  menuBtn.addEventListener("click", () => {
+    mobileMenu.classList.toggle("hidden");
+    const expanded = menuBtn.getAttribute("aria-expanded") === "true";
+    menuBtn.setAttribute("aria-expanded", !expanded);
+  });
+
+  document.addEventListener("click", (e) => {
+    if (!mobileMenu.contains(e.target) && !menuBtn.contains(e.target)) {
+      mobileMenu.classList.add("hidden");
+      menuBtn.setAttribute("aria-expanded", false);
+    }
+  });
+
+  // ===== Calculator Logic =====
+  document.addEventListener('DOMContentLoaded', function() {
+    const resultSpan = document.getElementById('result');
+    const clearButton = document.getElementById('clearButton');
+    const calcButtons = document.querySelectorAll('.calcButton');
+
+    calcButtons.forEach(button => {
+      button.addEventListener('click', function() {
+        const rate = parseFloat(this.dataset.rate);
+        const amountInput = document.getElementById('number1').value;
+        const amount = parseFloat(amountInput);
+
+        if (amountInput.trim() === '') return alert('Please enter an amount');
+        if (isNaN(amount)) return alert('Please enter a valid number');
+        if (amountInput.includes('.')) return resultSpan.textContent = '0';
+        if (amount < 0) return alert('Amount cannot be negative');
+        if (amount === 0) return resultSpan.textContent = '0';
+
+        resultSpan.textContent = `${(amount * rate).toFixed(2)} Tk ${this.dataset.type}`;
+      });
     });
-    
-</script>
-<!-- Footer -->
-  <footer class="bg-gray-900 text-white py-8 text-center">
-    <p>&copy; 2026 MFS~calc. All Rights Reserved. Developed by <a href="https://nh-404.github.io" class="text-blue-400 hover:underline">Tasnimul Hasan</a></p>
 
-  </footer>
+    clearButton.addEventListener('click', function() {
+      resultSpan.textContent = '0';
+      document.getElementById('number1').value = '';
+    });
+  });
+</script>
+
+<!-- ===== Footer ===== -->
+<footer class="bg-gray-900 text-white py-8 text-center">
+  <p>&copy; 2026 MFS~Calc. All Rights Reserved. Developed by <a href="https://nh-404.github.io" class="text-blue-400 hover:underline">Tasnimul Hasan</a></p>
+</footer>
 
 </body>
 </html>
