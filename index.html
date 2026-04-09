@@ -1,311 +1,192 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>MFS~calc - Home</title>
-  
-  <!-- Tailwind CSS via CDN -->
+
+  <!-- Tailwind -->
   <script src="https://cdn.tailwindcss.com"></script>
   <script>
     tailwind.config = {
+      darkMode: 'class',
       theme: {
         extend: {
           colors: {
             primary: '#375f54',
             secondary: '#82cfff',
-            darkBg: '#121212',
-            lightBg: '#f8f9fa',
           }
         }
       }
     }
   </script>
-  
-  <!-- Google AdSense Code - Replace with your own publisher ID -->
+
+  <!-- AdSense -->
   <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-9609837090057433" crossorigin="anonymous"></script>
-  
+
   <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+
   <style>
-    body {
-      font-family: 'Poppins', sans-serif;
-      transition: background-color 0.3s, color 0.3s;
-    }
+    body { font-family: 'Poppins', sans-serif; }
 
-    /* Hero section background */
     #hero {
-      background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('static/assets/img/mfsCalc_logo.webp') center/cover no-repeat;
+      background: url('static/assets/img/mfsCalc_logo.webp') center/cover no-repeat;
     }
 
-    /* Scroll to Top Button */
-    #scrollToTopBtn {
-      position: fixed;
-      bottom: 40px;
-      right: 40px;
-      background-color: #375f54;
-      color: white;
-      border: none;
-      border-radius: 45%;
-      padding: 10px;
-      font-size: 20px;
-      cursor: pointer;
-      display: none;
-      transition: opacity 0.3s;
-      z-index: 100;
-    }
-
-    #scrollToTopBtn:hover {
-      background-color: #0056b3;
-    }
-    
-    /* Ad Container Styles */
     .ad-container {
       margin: 20px 0;
       text-align: center;
       min-height: 90px;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      overflow: hidden;
-      background-color: rgba(200, 200, 200, 0.1);
-      border-radius: 8px;
-      padding: 10px;
     }
-    
-    .ad-label {
-      font-size: 0.7rem;
-      color: #888;
-      text-align: center;
-      margin-bottom: 5px;
-      text-transform: uppercase;
-    }
-    
-    /* Sidebar Ads */
+
     .ad-sidebar {
       position: fixed;
       top: 50%;
       transform: translateY(-50%);
       width: 160px;
-      z-index: 90;
-      background: rgba(200, 200, 200, 0.1);
-      border-radius: 8px;
-      padding: 10px;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      min-height: 600px;
+      z-index: 40;
     }
-    
-    .ad-sidebar-left {
-      left: 10px;
-    }
-    
-    .ad-sidebar-right {
-      right: 10px;
-    }
-    
-    /* Responsive adjustments */
-    @media (max-width: 1200px) {
-      .ad-sidebar {
-        width: 120px;
-        min-height: 500px;
-      }
-    }
-    
+
+    .ad-sidebar-left { left: 10px; }
+    .ad-sidebar-right { right: 10px; }
+
     @media (max-width: 1024px) {
-      .ad-sidebar {
-        display: none;
-      }
-      
-      .ad-container {
-        min-height: 90px;
-        padding: 8px;
-      }
-    }
-    
-    @media (max-width: 767px) {
-      .ad-container {
-        min-height: 50px;
-        padding: 5px;
-      }
-      
-      /* Hide some ads on mobile for better UX */
-      .mobile-ad-hide {
-        display: none;
-      }
+      .ad-sidebar { display: none; }
     }
   </style>
 </head>
 
-<body class="dark-mode bg-darkBg text-gray-200">
+<body class="min-h-screen transition-colors duration-300 
+bg-gradient-to-br from-gray-100 via-gray-200 to-gray-300 
+dark:from-gray-900 dark:via-gray-800 dark:to-black 
+text-gray-800 dark:text-gray-200">
 
-  <!-- Left Sidebar Ad (Desktop only) -->
-  <div class="ad-sidebar ad-sidebar-left hidden lg:block">
-    <div class="ad-label">Advertisement</div>
-    <!-- Google AdSense Ad Unit -->
+<!-- Sidebar Ads -->
+<div class="ad-sidebar ad-sidebar-left hidden lg:block">
+  <ins class="adsbygoogle"
+       style="display:block"
+       data-ad-client="ca-pub-9609837090057433"
+       data-ad-slot="3205777794"></ins>
+</div>
+
+<div class="ad-sidebar ad-sidebar-right hidden lg:block">
+  <ins class="adsbygoogle"
+       style="display:block"
+       data-ad-client="ca-pub-9609837090057433"
+       data-ad-slot="1764403885"></ins>
+</div>
+
+<!-- Header -->
+<header class="bg-primary dark:bg-gray-800 sticky top-0 z-50 shadow">
+  <nav class="max-w-6xl mx-auto flex justify-between items-center px-4 py-3">
+
+    <h1 class="text-white font-semibold">MFS~Calc</h1>
+
+    <div class="flex items-center gap-3">
+      <button id="themeToggle" class="text-white text-lg">🌙</button>
+      <button id="menuBtn" class="md:hidden text-white text-xl">☰</button>
+    </div>
+
+    <div class="hidden md:flex gap-6 text-white text-sm">
+      <a href="index.html" class="hover:text-white transition-colors duration-200">Home</a>
+      <a href="mfscalc.html" class="hover:text-white transition-colors duration-200">MFS-Calc</a>
+      <a href="contact.html" class="hover:text-white transition-colors duration-200">Contact</a>
+    </div>
+  </nav>
+
+    <div id="mobileMenu" class="md:hidden hidden bg-primary dark:bg-gray-800 px-5 pb-4 pt-2 shadow-inner">
+      <a href="index.html" class="block py-2 text-white/90 hover:text-white">Home</a>
+      <a href="mfscalc.html" class="block py-2 text-white/90 hover:text-white">MFS-Calc</a>
+      <a href="contact.html" class="block py-2 text-white font-medium">Contact</a>
+    </div>
+</header>
+
+<!-- Hero -->
+<section id="hero" class="min-h-screen flex items-center justify-center text-center relative">
+  <div class="absolute inset-0 bg-black/60"></div>
+
+  <div class="relative z-10 px-4">
+    <h1 class="text-4xl md:text-5xl font-bold text-white mb-4">MFS~Calc</h1>
+    <p class="text-lg md:text-xl text-gray-200 mb-6">
+      Calculate bKash, Nagad & Rocket charges instantly
+    </p>
+    <a href="mfscalc.html" class="bg-blue-600 hover:bg-blue-700 text-white px-6 py-3 rounded-lg">
+      Try Now
+    </a>
+  </div>
+</section>
+
+<!-- Top Ad -->
+<div class="max-w-4xl mx-auto px-4">
+  <div class="ad-container">
     <ins class="adsbygoogle"
          style="display:block"
          data-ad-client="ca-pub-9609837090057433"
-         data-ad-slot="3205777794"
-         data-ad-format="auto"
-         data-full-width-responsive="false"></ins>
-    <script>
-         (adsbygoogle = window.adsbygoogle || []).push({});
-    </script>
+         data-ad-slot="3556245127"
+         data-full-width-responsive="true"></ins>
   </div>
+</div>
 
-  <!-- Right Sidebar Ad (Desktop only) In-aericle-->
-  <div class="ad-sidebar ad-sidebar-right hidden lg:block">
-    <div class="ad-label">Advertisement</div>
-    <!-- Google AdSense Ad Unit -->
+<!-- Download -->
+<section class="max-w-4xl mx-auto text-center py-10 px-4">
+  <h2 class="text-2xl font-bold mb-3">Download App</h2>
+  <p class="mb-6">Get the app for quick access</p>
+  <a href="https://github.com/nh-404/MFS-Calculator/releases/download/v1.1.4/MFS.Calculatior_v1.1.4.apk"
+     class="bg-green-600 hover:bg-green-700 text-white px-6 py-3 rounded-lg">
+     Download APK
+  </a>
+</section>
+
+<!-- Middle Ad -->
+<div class="max-w-4xl mx-auto px-4">
+  <div class="ad-container">
     <ins class="adsbygoogle"
          style="display:block"
          data-ad-client="ca-pub-9609837090057433"
-         data-ad-slot="1764403885"
-         data-ad-format="auto"
-         data-full-width-responsive="false"></ins>
-    <script>
-         (adsbygoogle = window.adsbygoogle || []).push({});
-    </script>
+         data-ad-slot="5228419443"></ins>
   </div>
+</div>
 
-  <!-- Header -->
-  <header id="header" class="bg-primary py-3">
-    <nav class="container mx-auto flex justify-between items-center">
-      <a class="navbar-brand text-white text-xl font-bold p-2" href="home.html">MFS~Calc</a>
-      
-      <div class="md:hidden">
-        <button class="navbar-toggler text-white text-2xl" type="button" id="mobile-menu-button">
-          <i class="fas fa-bars"></i>
-        </button>
-      </div>
-      
-      <div class="hidden md:flex items-center space-x-6" id="navbarNav">
-        <a class="nav-link hover:text-secondary transition" href="#hero">Home</a>
-        <a class="nav-link hover:text-secondary transition" href="#about">Contact</a>
-        <button class="bg-transparent border border-white text-white hover:bg-white hover:text-primary px-4 py-2 rounded transition" id="darkModeToggle">☀️ Light Mode</button>
-      </div>
-    </nav>
-    
-    <!-- Mobile menu (hidden by default) -->
-    <div class="md:hidden hidden bg-primary pt-2 pb-4 px-4" id="mobile-menu">
-      <div class="flex flex-col space-y-3">
-        <a class="nav-link hover:text-secondary transition" href="#hero">Home</a>
-        <a class="nav-link hover:text-secondary transition" href="#about">Contact</a>
-        <button class="bg-transparent border border-white text-white hover:bg-white hover:text-primary px-4 py-2 rounded transition w-full" id="darkModeToggleMobile">☀️ Light Mode</button>
-      </div>
-    </div>
-  </header>
+<!-- About -->
+<section id="about" class="max-w-6xl mx-auto px-4 py-12">
+  <h2 class="text-3xl font-bold text-center mb-10">Why MFS~Calc?</h2>
 
-  <!-- Hero Section -->
-  <section id="hero" class="min-h-screen flex items-center justify-center text-center">
-    <div class="container mx-auto px-4">
-      <h1 class="text-4xl md:text-5xl font-bold mb-4">MFS~Calc</h1>
-      <p class="text-xl md:text-2xl mb-8">The ultimate Mobile Financial Service (MFS) cash-out charge calculator for bKash, Nagad, and Rocket.</p>
-      <a href="home.html" class="bg-blue-600 hover:bg-blue-700 text-white font-bold py-3 px-8 rounded-lg transition">Try Now</a>
-    </div>
-  </section>
+  <div class="grid md:grid-cols-3 gap-6">
 
-  <!-- Top Ad Banner -->
-  <div class="container mx-auto mt-4 px-4">
-    <div class="ad-label">Advertisement</div>
-    <div class="ad-container">
-      <!-- Google AdSense Ad Unit Top Banner-->
-      <ins class="adsbygoogle"
-           style="display:block"
-           data-ad-client="ca-pub-9609837090057433"
-           data-ad-slot="3556245127"
-           data-ad-format="auto"
-           data-full-width-responsive="true"></ins>
-      <script>
-           (adsbygoogle = window.adsbygoogle || []).push({});
-      </script>
+    <div class="p-6 bg-white dark:bg-gray-800 rounded-xl shadow">
+      <i class="fas fa-mobile-alt text-3xl text-secondary mb-3"></i>
+      <h5 class="font-semibold mb-2">Mobile Friendly</h5>
+      <p class="text-sm text-gray-600 dark:text-gray-300">Works on all devices</p>
     </div>
+
+    <div class="p-6 bg-white dark:bg-gray-800 rounded-xl shadow">
+      <i class="fas fa-calculator text-3xl text-secondary mb-3"></i>
+      <h5 class="font-semibold mb-2">Easy Calculation</h5>
+      <p class="text-sm text-gray-600 dark:text-gray-300">Fast and accurate</p>
+    </div>
+
+    <div class="p-6 bg-white dark:bg-gray-800 rounded-xl shadow">
+      <i class="fas fa-globe text-3xl text-secondary mb-3"></i>
+      <h5 class="font-semibold mb-2">Future Ready</h5>
+      <p class="text-sm text-gray-600 dark:text-gray-300">More features coming</p>
+    </div>
+
   </div>
+</section>
 
-  <!-- Download App Section -->
-  <section id="downloadApp" class="container mx-auto text-center my-12 py-8 px-4">
-    <h2 class="text-3xl font-bold mb-4">Download Our App</h2>
-    <p class="text-lg mb-8">Get the MFS~Calc app on your phone for fast and easy access to our calculator!</p>
-    <div class="flex justify-center">
-      <a href="https://github.com/nh-404/MFS-Calculator/releases/download/v1.1.4/MFS.Calculatior_v1.1.4.apk" class="bg-green-600 hover:bg-green-700 text-white font-bold py-3 px-6 rounded-lg transition mx-2"> Download </a>
-    </div>
-  </section>
-
-  <!-- Middle Ad Banner -->
-  <div class="container mx-auto px-4">
-    <div class="ad-label">Advertisement</div>
-    <div class="ad-container">
-      <!-- Google AdSense Ad Unit Middle Banner-->
-      <ins class="adsbygoogle"
-           style="display:block"
-           data-ad-client="ca-pub-9609837090057433"
-           data-ad-slot="5228419443"
-           data-ad-format="auto"
-           data-full-width-responsive="true"></ins>
-      <script>
-           (adsbygoogle = window.adsbygoogle || []).push({});
-      </script>
-    </div>
+<!-- Footer Ad -->
+<div class="max-w-4xl mx-auto px-4">
+  <div class="ad-container">
+    <ins class="adsbygoogle"
+         style="display:block"
+         data-ad-client="ca-pub-9609837090057433"
+         data-ad-slot="3987489967"></ins>
   </div>
+</div>
 
-  <!-- About Section -->
-  <section id="about" class="container mx-auto px-4 py-12">
-    <h2 class="text-3xl font-bold text-center mb-12">What is MFS~Calc?</h2>
-    
-    <!-- In-content Ad -->
-    <div class="ad-container my-4 mobile-ad-hide">
-      <div class="ad-label">Advertisement</div>
-      <ins class="adsbygoogle"
-           style="display:block; text-align:center;"
-           data-ad-client="ca-pub-9609837090057433"
-           data-ad-slot="9084490701"
-           data-ad-format="auto"
-           data-full-width-responsive="true"></ins>
-      <script>
-           (adsbygoogle = window.adsbygoogle || []).push({});
-      </script>
-    </div>
-    
-    <div class="grid grid-cols-1 md:grid-cols-3 gap-8 mt-5">
-      <div class="text-center feature p-6 rounded-lg bg-gray-800 hover:bg-gray-700 transition">
-        <i class="fas fa-mobile-alt text-4xl text-secondary mb-4"></i>
-        <h5 class="text-xl font-semibold mb-2">Mobile Friendly</h5>
-        <p class="text-gray-300">Seamlessly calculate charges on your mobile device.</p>
-      </div>
-      <div class="text-center feature p-6 rounded-lg bg-gray-800 hover:bg-gray-700 transition">
-        <i class="fas fa-calculator text-4xl text-secondary mb-4"></i>
-        <h5 class="text-xl font-semibold mb-2">Easy Calculations</h5>
-        <p class="text-gray-300">Calculate cash-out charges in just a few clicks.</p>
-      </div>
-      <div class="text-center feature p-6 rounded-lg bg-gray-800 hover:bg-gray-700 transition">
-        <i class="fas fa-globe text-4xl text-secondary mb-4"></i>
-        <h5 class="text-xl font-semibold mb-2">Global Expansion</h5>
-        <p class="text-gray-300">Future updates will support worldwide providers.</p>
-      </div>
-    </div>
-  </section>
-
-  <!-- Footer Ad Banner -->
-  <div class="container mx-auto mb-8 px-4">
-    <div class="ad-label">Advertisement</div>
-    <div class="ad-container">
-      <ins class="adsbygoogle"
-           style="display:block"
-           data-ad-client="ca-pub-9609837090057433"
-           data-ad-slot="3987489967"
-           data-ad-format="auto"
-           data-full-width-responsive="true"></ins>
-      <script>
-           (adsbygoogle = window.adsbygoogle || []).push({});
-      </script>
-    </div>
-  </div>
-
-  <!-- Footer -->
+<!-- Footer -->
   <footer class="bg-gray-900 text-white py-8 text-center">
-    <p>&copy; 2025 MFS~calc. All Rights Reserved. Developed by <a href="https://nh-404.github.io" class="text-blue-400 hover:underline">Tasnimul Hasan</a></p>
+    <p>&copy; 2026 MFS~calc. All Rights Reserved. Developed by <a href="https://nh-404.github.io" class="text-blue-400 hover:underline">Tasnimul Hasan</a></p>
     <div class="social-links mt-4">
       <a href="https://twitter.com/nh_404" class="text-2xl mx-3 hover:text-secondary transition"><i class="fab fa-twitter"></i></a>
       <a href="https://t.me/nh_404" class="text-2xl mx-3 hover:text-secondary transition"><i class="fab fa-telegram"></i></a>
@@ -313,88 +194,46 @@
     </div>
   </footer>
 
-  <!-- Scroll to Top Button -->
-  <button id="scrollToTopBtn" title="Go to top">&#8593;</button>
+<script>
+// Dark mode init
+(function () {
+  const saved = localStorage.getItem("theme");
+  if (saved === "dark" || 
+     (!saved && window.matchMedia("(prefers-color-scheme: dark)").matches)) {
+    document.documentElement.classList.add("dark");
+    document.getElementById("themeToggle").textContent = "☀️";
+  }
+})();
 
-  <script>
-    // Dark mode toggle functionality
-    const darkModeToggle = document.getElementById('darkModeToggle');
-    const darkModeToggleMobile = document.getElementById('darkModeToggleMobile');
-    const body = document.body;
-    const scrollToTopBtn = document.getElementById('scrollToTopBtn');
-    
-    // Mobile menu functionality
-    const mobileMenuButton = document.getElementById('mobile-menu-button');
-    const mobileMenu = document.getElementById('mobile-menu');
+// Toggle theme
+document.getElementById("themeToggle").onclick = () => {
+  const html = document.documentElement;
 
-    function toggleDarkMode() {
-      body.classList.toggle('dark-mode');
-      body.classList.toggle('light-mode');
-      
-      if (body.classList.contains('dark-mode')) {
-        body.classList.add('bg-darkBg');
-        body.classList.remove('bg-lightBg');
-        body.classList.add('text-gray-200');
-        body.classList.remove('text-gray-800');
-        darkModeToggle.textContent = '☀️ Light Mode';
-        if (darkModeToggleMobile) darkModeToggleMobile.textContent = '☀️ Light Mode';
-      } else {
-        body.classList.remove('bg-darkBg');
-        body.classList.add('bg-lightBg');
-        body.classList.remove('text-gray-200');
-        body.classList.add('text-gray-800');
-        darkModeToggle.textContent = '🌙 Dark Mode';
-        if (darkModeToggleMobile) darkModeToggleMobile.textContent = '🌙 Dark Mode';
-      }
-      
-      // Refresh ads on mode change
-      setTimeout(() => {
-        try {
-          (adsbygoogle = window.adsbygoogle || []).push({});
-        } catch (e) {
-          console.log('Ad refresh error:', e);
-        }
-      }, 300);
-    }
+  if (html.classList.contains("dark")) {
+    html.classList.remove("dark");
+    localStorage.setItem("theme", "light");
+    document.getElementById("themeToggle").textContent = "🌙";
+  } else {
+    html.classList.add("dark");
+    localStorage.setItem("theme", "dark");
+    document.getElementById("themeToggle").textContent = "☀️";
+  }
+};
 
-    darkModeToggle.addEventListener('click', toggleDarkMode);
-    if (darkModeToggleMobile) {
-      darkModeToggleMobile.addEventListener('click', toggleDarkMode);
-    }
+// Mobile menu
+document.getElementById("menuBtn").onclick = () => {
+  document.getElementById("mobileMenu").classList.toggle("hidden");
+};
 
-    // Mobile menu toggle
-    mobileMenuButton.addEventListener('click', () => {
-      mobileMenu.classList.toggle('hidden');
-    });
+// Ads init
+window.onload = () => {
+  setTimeout(() => {
+    try {
+      (adsbygoogle = window.adsbygoogle || []).push({});
+    } catch (e) {}
+  }, 1000);
+};
+</script>
 
-    // Show or hide the "scroll to top" button
-    window.onscroll = () => {
-      if (document.body.scrollTop > 200 || document.documentElement.scrollTop > 200) {
-        scrollToTopBtn.style.display = "block";
-      } else {
-        scrollToTopBtn.style.display = "none";
-      }
-    };
-
-    // Smooth scroll to top when the button is clicked
-    scrollToTopBtn.onclick = () => {
-      window.scrollTo({
-        top: 0,
-        behavior: 'smooth'
-      });
-    };
-    
-    // Refresh ads on page load
-    window.onload = function() {
-      setTimeout(() => {
-        try {
-          (adsbygoogle = window.adsbygoogle || []).push({});
-        } catch (e) {
-          console.log('Ad load error:', e);
-        }
-      }, 1000);
-    };
-  </script>
 </body>
-
 </html>

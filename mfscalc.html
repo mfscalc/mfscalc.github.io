@@ -1,0 +1,246 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>MFS Calc</title>
+
+  <!-- Tailwind CDN -->
+   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"/>
+  <script src="https://cdn.tailwindcss.com"></script>
+
+  <script>
+    tailwind.config = {
+      darkMode: 'class',
+      theme: {
+        extend: {
+          colors: {
+            primary: '#375f54',
+            secondary: '#82cfff',
+          }
+        }
+      }
+    }
+  </script>
+</head>
+
+<body class="min-h-screen transition-all duration-500 
+bg-gradient-to-br from-teal-50 via-white to-blue-100 
+dark:from-gray-900 dark:via-slate-800 dark:to-black 
+text-gray-800 dark:text-gray-200">
+
+<!-- Navbar -->
+<header class="bg-teal-800 fixed top-0 left-0 w-full shadow z-50">
+  <div class="max-w-5xl mx-auto flex justify-between items-center px-4 py-3">
+    <h1 class="text-white text-xl font-bold">MFS~Calc</h1>
+
+    <div class="flex items-center gap-3">
+      <!-- Theme Toggle -->
+      <button onclick="toggleTheme()" id="themeToggle" class="text-white text-xl">
+        🌙
+      </button>
+
+      <!-- Mobile Menu -->
+      <button onclick="toggleMenu()" class="md:hidden text-white text-2xl">
+        ☰
+      </button>
+    </div>
+
+    <nav class="hidden md:flex gap-6 text-white">
+      <a href="index.html" class="hover:underline">Home</a>
+      <a href="contact.html" class="hover:underline">Contact</a>
+      <a href="https://github.com/nh-404/MFS-Calculator/releases/download/v1.1.4/MFS.Calculatior_v1.1.4.apk" class="hover:underline">Download</a>
+    </nav>
+  </div>
+
+  <!-- Mobile Menu -->
+  <div id="mobileMenu" class="hidden flex-col bg-teal-800 text-white md:hidden px-4 pb-4">
+    <a href="index.html" class="py-2 border-b border-white/20">Home</a>
+    <a href="contact.html" class="py-2 border-b border-white/20">Contact</a>
+    <a href="https://github.com/nh-404/MFS-Calculator/releases/download/v1.1.4/MFS.Calculatior_v1.1.4.apk" class="py-2 border-b border-white/20">Download</a>
+  </div>
+</header>
+
+<!-- Main -->
+<div class="pt-24 px-4 flex justify-center">
+  <div class="w-full max-w-md 
+    bg-white/80 dark:bg-gray-900/80 
+    backdrop-blur-lg rounded-xl p-5 shadow-lg transition">
+
+    <!-- Result -->
+    <div class="text-center mb-5">
+      <h1 class="text-gray-800 dark:text-white text-lg md:text-xl font-semibold">
+        Total charge:
+      </h1>
+      <p id="result" class="text-2xl font-bold text-gray-900 dark:text-white mt-2">
+        0
+      </p>
+    </div>
+
+    <!-- Input -->
+    <input id="number1"
+      type="number"
+      placeholder="Enter amount"
+      class="w-full p-3 rounded-lg mb-5 text-lg outline-none 
+      bg-gray-100 dark:bg-gray-800 
+      text-black dark:text-white">
+
+    <h2 class="text-center mb-4 font-medium text-gray-700 dark:text-gray-300">
+      Choose Service
+    </h2>
+
+    <div class="space-y-4">
+
+      <!-- USSD -->
+      <div>
+        <p class="text-gray-600 dark:text-gray-400 text-sm mb-2">Cashout [USSD]</p>
+        <div class="grid grid-cols-3 gap-2">
+          <button data-rate="0.0185" data-type="Bkash [*247#]" class="calcButton bg-pink-600 text-white p-3 rounded-lg">Bkash</button>
+          <button data-rate="0.015" data-type="Nagad [*167#]" class="calcButton bg-orange-600 text-black p-3 rounded-lg">Nagad</button>
+          <button data-rate="0.018" data-type="Rocket [*322#]" class="calcButton bg-purple-900 text-white p-3 rounded-lg">Rocket</button>
+        </div>
+      </div>
+
+      <!-- APP -->
+      <div>
+        <p class="text-gray-600 dark:text-gray-400 text-sm mb-2">Cashout [App]</p>
+        <div class="grid grid-cols-3 gap-2">
+          <button data-rate="0.0185" data-type="Bkash [APP]" class="calcButton bg-pink-600 text-white p-3 rounded-lg">Bkash</button>
+          <button data-rate="0.0125" data-type="Nagad [APP]" class="calcButton bg-orange-600 text-black p-3 rounded-lg">Nagad</button>
+          <button data-rate="0.018"  data-type="Rocket [APP]"class="calcButton bg-purple-900 text-white p-3 rounded-lg">Rocket</button>
+        </div>
+      </div>
+
+      <!-- Other -->
+      <div>
+        <p class="text-gray-600 dark:text-gray-400 text-sm mb-2">Other</p>
+        <div class="grid grid-cols-3 gap-2">
+          <button data-rate="0.009"  data-type="Rocket [ATM]" class="calcButton bg-purple-900 text-white p-3 rounded-lg">Rocket ATM</button>
+          <button data-rate="0.0149" data-type="Bkash [Fav]" class="calcButton bg-pink-600 text-white p-3 rounded-lg">Bkash Fav</button>
+          <button data-rate="0.0149" data-type="Bkash [ATM]" class="calcButton bg-pink-600 text-white p-3 rounded-lg">Bkash ATM</button>
+        </div>
+      </div>
+
+      <!-- Bank -->
+      <div>
+        <p class="text-gray-600 dark:text-gray-400 text-sm mb-2">Bank Transfer</p>
+        <div class="grid grid-cols-2 gap-2">
+          <button data-rate="0.0125" data-type="Bkash To [Other Bank]"class="calcButton bg-pink-600 text-white p-3 rounded-lg">Bkash To [Other Bank]</button>
+          <button data-rate="0.0115" data-type="Bkash To [BRAC]" class="calcButton bg-pink-600 text-white p-3 rounded-lg">Bkash To [BRAC]</button>
+          <button data-rate="0.015"  data-type="Nagad To [Bank]" class="calcButton bg-orange-600 text-black p-3 rounded-lg">Nagad To [Bank]</button>
+          <button data-rate="0.0850" data-type="Bkash To [NPSB]" class="calcButton bg-pink-600 text-white p-3 rounded-lg">Bkash NPSB</button>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- Clear -->
+<button id="clearButton" class="w-full mt-5 bg-red-900 text-white p-3 rounded-lg flex items-center justify-center gap-2">
+  <i class="fas fa-trash"></i> <!-- Icon -->
+  Clear
+</button>
+
+  </div>
+</div>
+
+
+<script>
+// Theme Load
+(function () {
+  const savedTheme = localStorage.getItem("theme");
+
+  if (
+    savedTheme === "dark" ||
+    (!savedTheme && window.matchMedia("(prefers-color-scheme: dark)").matches)
+  ) {
+    document.documentElement.classList.add("dark");
+    document.getElementById("themeToggle").textContent = "☀️";
+  }
+})();
+
+// Toggle Theme
+function toggleTheme() {
+  const html = document.documentElement;
+  const btn = document.getElementById("themeToggle");
+
+  if (html.classList.contains("dark")) {
+    html.classList.remove("dark");
+    localStorage.setItem("theme", "light");
+    btn.textContent = "🌙";
+  } else {
+    html.classList.add("dark");
+    localStorage.setItem("theme", "dark");
+    btn.textContent = "☀️";
+  }
+}
+
+// Mobile Menu
+function toggleMenu() {
+  document.getElementById('mobileMenu').classList.toggle('hidden');
+}
+
+// Calculator Logic
+    document.addEventListener('DOMContentLoaded', function() {
+        const resultSpan = document.getElementById('result');
+        const clearButton = document.getElementById('clearButton');
+        const calcButtons = document.querySelectorAll('.calcButton');
+    
+        calcButtons.forEach(button => {
+            button.addEventListener('click', function() {
+                const rate = parseFloat(this.getAttribute('data-rate'));
+                const amountInput = document.getElementById('number1').value;
+                const amount = parseFloat(amountInput);
+    
+                // Check if the input is empty
+                if (amountInput.trim() === '') {
+                    alert('Please enter an amount');
+                    return;
+                }
+    
+                // Check if the input is a valid number
+                if (isNaN(amount)) {
+                    alert('Please enter a valid number');
+                    return;
+                }
+    
+                // Check if the input contains a decimal point
+                if (amountInput.includes('.')) {
+                    resultSpan.textContent = '0'; // Display 0 if there's a decimal point
+                    return; // Exit the function to prevent further calculations
+                }
+    
+                // Check if the amount is negative
+                if (amount < 0) {
+                    alert('Amount cannot be negative');
+                    return;
+                }
+    
+                // Check if the amount is a valid number greater than zero
+                if (amount === 0) {
+                    resultSpan.textContent = '0'; // Show 0 if the amount is 0
+                    return;
+                }
+    
+                // Perform the calculation
+                let result = (amount * rate).toFixed(2);
+    
+                // Display the result
+                resultSpan.textContent = `${result} Tk ${this.getAttribute('data-type')}`;
+            });
+        });
+    
+        clearButton.addEventListener('click', function() {
+            resultSpan.textContent = '0';
+            document.getElementById('number1').value = '';
+        });
+    });
+    
+</script>
+<!-- Footer -->
+  <footer class="bg-gray-900 text-white py-8 text-center">
+    <p>&copy; 2026 MFS~calc. All Rights Reserved. Developed by <a href="https://nh-404.github.io" class="text-blue-400 hover:underline">Tasnimul Hasan</a></p>
+
+  </footer>
+
+</body>
+</html>
