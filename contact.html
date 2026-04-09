@@ -6,7 +6,6 @@
   <title>Contact | MFS~Calc — Direct Connect</title>
   <!-- Tailwind CSS v3 + Font Awesome -->
   <script src="https://cdn.tailwindcss.com"></script>
-  <!-- Custom Tailwind config with dark mode and extended palette -->
   <script>
     tailwind.config = {
       darkMode: 'class',
@@ -38,33 +37,39 @@
       }
     }
   </script>
-  <!-- Google Fonts Inter + fallback -->
   <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;14..32,400;14..32,500;14..32,600;14..32,700&display=swap" rel="stylesheet">
-  <!-- Font Awesome 6 (free) -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
-  <style>
-    /* smooth transition for dark mode background + subtle glass effect */
-    * {
-      transition: background-color 0.2s ease, border-color 0.2s ease, box-shadow 0.2s ease;
-    }
-    body {
-      transition: background 0.4s ease, color 0.3s ease;
-    }
-    /* custom card hover enhancements */
-    .contact-card {
-      transition: transform 0.25s ease, box-shadow 0.3s ease;
-    }
-    .contact-card:hover {
-      transform: translateY(-4px);
-    }
-  </style>
+<style>
+  /* GLOBAL BASE TRANSITIONS - ensures smooth dark mode background switch */
+  * { transition: background-color 0.25s ease, border-color 0.2s ease, box-shadow 0.2s ease, color 0.2s ease; }
+  body { transition: background 0.4s ease, color 0.3s ease; }
+  
+  /* Force background gradient to transition smoothly with dark class */
+  body {
+    background-image: linear-gradient(to bottom right, #f0fdfa, #ffffff, #e0f2fe);
+    background-attachment: fixed;
+    background-size: cover;
+  }
+  body.dark {
+    background-image: linear-gradient(to bottom right, #111827, #1f2937, #030712);
+    background-attachment: fixed;
+    background-size: cover;
+  }
+  
+  /* additional utility for smooth card backdrop */
+  .contact-card { transition: transform 0.25s ease, box-shadow 0.3s ease, background-color 0.2s ease; }
+  .contact-card:hover { transform: translateY(-4px); }
+  
+  /* ensure all backdrop-blur elements also adapt */
+  .glass-card {
+    transition: background-color 0.2s ease, backdrop-filter 0.2s ease;
+  }
+</style>
 </head>
 <body class="min-h-screen font-sans antialiased
-             bg-gradient-to-br from-teal-50 via-white to-blue-100
-             dark:bg-gradient-to-br dark:from-gray-900 dark:via-gray-800 dark:to-black
-             text-gray-800 dark:text-gray-200">
+            bg-gradient-to-br from-teal-50 via-white to-blue-100">
 
-  <!-- Header with modern sticky blur & theme toggle fix -->
+  <!-- Header -->
   <header class="bg-primary/95 dark:bg-gray-800/95 backdrop-blur-sm sticky top-0 z-50 shadow-md transition-all">
     <nav class="max-w-6xl mx-auto flex justify-between items-center px-5 py-3.5 md:px-6">
       <div class="flex items-center gap-2">
@@ -74,20 +79,15 @@
         <h1 class="text-white font-semibold text-lg tracking-tight">MFS~Calc</h1>
       </div>
       <div class="flex items-center gap-4">
-        <!-- Dark mode toggle with improved icon & accessibility -->
-        <button id="themeToggle" class="text-white text-xl focus:outline-none focus:ring-2 focus:ring-white/40 rounded-full p-1 transition hover:scale-105" aria-label="Toggle dark mode">
-          🌙
-        </button>
+        <button id="themeToggle" class="text-white text-xl focus:outline-none focus:ring-2 focus:ring-white/40 rounded-full p-1 transition hover:scale-105" aria-label="Toggle dark mode">🌙</button>
         <button id="menuBtn" class="md:hidden text-white text-2xl focus:outline-none" aria-label="Menu">☰</button>
       </div>
-      <!-- Desktop nav links -->
       <div class="hidden md:flex gap-6 text-white/90 text-sm font-medium">
         <a href="index.html" class="hover:text-white transition-colors duration-200">Home</a>
         <a href="mfscalc.html" class="hover:text-white transition-colors duration-200">MFS-Calc</a>
         <a href="contact.html" class="border-b-2 border-white/40 pb-0.5 text-white">Contact</a>
       </div>
     </nav>
-    <!-- Mobile menu (simple hidden - just placeholder for consistency, but functional) -->
     <div id="mobileMenu" class="md:hidden hidden bg-primary dark:bg-gray-800 px-5 pb-4 pt-2 shadow-inner">
       <a href="index.html" class="block py-2 text-white/90 hover:text-white">Home</a>
       <a href="mfscalc.html" class="block py-2 text-white/90 hover:text-white">MFS-Calc</a>
@@ -95,9 +95,8 @@
     </div>
   </header>
 
-  <!-- Main content: No forms, only contact cards & direct methods -->
+  <!-- Main Content -->
   <main class="max-w-6xl mx-auto px-5 py-12 md:py-16 lg:py-20">
-    <!-- Hero section with fade-in -->
     <div class="text-center max-w-2xl mx-auto mb-14 animate-fade-in">
       <div class="inline-flex items-center gap-2 bg-white/60 dark:bg-gray-800/50 backdrop-blur-sm rounded-full px-4 py-1.5 shadow-sm mb-5">
         <i class="fas fa-comment-dots text-primary dark:text-secondary text-sm"></i>
@@ -112,10 +111,9 @@
       </p>
     </div>
 
-    <!-- Cards Grid: fully responsive, no input fields, just contact details -->
+    <!-- Cards Grid -->
     <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8 animate-slide-up">
-      
-      <!-- Email Card -->
+      <!-- Email Card with Gmail Web -->
       <div class="contact-card bg-white/90 dark:bg-gray-900/90 backdrop-blur-sm rounded-2xl shadow-md hover:shadow-xl border border-gray-100 dark:border-gray-700 p-6 flex flex-col items-start transition-all">
         <div class="w-14 h-14 rounded-xl bg-indigo-50 dark:bg-indigo-900/60 flex items-center justify-center mb-5 shadow-inner">
           <i class="fas fa-envelope text-indigo-600 dark:text-indigo-400 text-2xl"></i>
@@ -123,7 +121,7 @@
         <h3 class="text-xl font-semibold text-gray-800 dark:text-white mb-2">Email</h3>
         <p class="text-gray-500 dark:text-gray-400 text-sm mb-4 leading-relaxed">Reach out via email for general inquiries or support.</p>
         <div class="mt-auto pt-2 w-full">
-          <a href="mailto:tasnimulhasan404@proton.me" class="inline-flex items-center gap-2 text-indigo-600 dark:text-indigo-400 font-medium hover:gap-3 transition-all duration-200 group">
+          <a href="https://mail.google.com/mail/?view=cm&to=tasnimulhasan404@proton.me" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-2 text-indigo-600 dark:text-indigo-400 font-medium hover:gap-3 transition-all duration-200 group">
             Send Mail
             <i class="fas fa-arrow-right text-sm transition-transform group-hover:translate-x-1"></i>
           </a>
@@ -138,13 +136,9 @@
         <div class="w-14 h-14 rounded-xl bg-emerald-50 dark:bg-emerald-900/60 flex items-center justify-center mb-5">
           <i class="fas fa-phone-alt text-emerald-600 dark:text-emerald-400 text-2xl"></i>
         </div>
-        <h3 class="text-xl font-semibold text-gray-800 dark:text-white mb-2">Call or WhatsApp</h3>
+        <h3 class="text-xl font-semibold text-gray-800 dark:text-white mb-2">Connect via WhatsApp</h3>
         <p class="text-gray-500 dark:text-gray-400 text-sm mb-4 leading-relaxed">Speak directly with our team — we’re happy to assist.</p>
         <div class="mt-auto space-y-2 w-full">
-          <a href="tel:+8801839300033" class="flex items-center justify-between w-full text-gray-700 dark:text-gray-300 hover:text-emerald-600 dark:hover:text-emerald-400 transition-colors py-1">
-            <span class="font-mono text-sm md:text-base">+880 1839-300033</span>
-            <i class="fas fa-phone-alt text-gray-400 group-hover:text-emerald-500"></i>
-          </a>
           <a href="https://wa.me/+8801839300033" target="_blank" class="flex items-center justify-between w-full text-gray-700 dark:text-gray-300 hover:text-emerald-600 dark:hover:text-emerald-400 transition-colors py-1">
             <span class="font-medium">WhatsApp</span>
             <i class="fab fa-whatsapp text-lg text-gray-400"></i>
@@ -155,7 +149,7 @@
         </div>
       </div>
 
-      <!-- Social Media Card (updated with working links) -->
+      <!-- Social Media Card -->
       <div class="contact-card bg-white/90 dark:bg-gray-900/90 backdrop-blur-sm rounded-2xl shadow-md hover:shadow-xl border border-gray-100 dark:border-gray-700 p-6 flex flex-col items-start transition-all">
         <div class="w-14 h-14 rounded-xl bg-rose-50 dark:bg-rose-900/60 flex items-center justify-center mb-5">
           <i class="fas fa-hashtag text-rose-500 dark:text-rose-400 text-2xl"></i>
@@ -182,7 +176,7 @@
       </div>
     </div>
 
-    <!-- Simple CTA banner without any form — encouraging connection -->
+    <!-- CTA Banner -->
     <div class="mt-16 rounded-2xl bg-gradient-to-r from-primary/10 to-secondary/10 dark:from-primary/20 dark:to-secondary/10 p-6 md:p-8 text-center border border-white/20 dark:border-gray-700 shadow-sm">
       <div class="flex flex-col sm:flex-row items-center justify-between gap-5">
         <div class="text-left sm:text-center lg:text-left">
@@ -192,7 +186,7 @@
           <p class="text-gray-600 dark:text-gray-300 text-sm mt-1 max-w-md">No forms to fill, no spam. Pick your favorite channel and say hello.</p>
         </div>
         <div class="flex gap-3">
-          <a href="mailto:tasnimulhasan404@proton.me" class="inline-flex items-center gap-2 bg-primary hover:bg-primary/80 text-white px-5 py-2.5 rounded-full text-sm font-medium shadow transition-all">
+          <a href="https://mail.google.com/mail/?view=cm&to=tasnimulhasan404@proton.me" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-2 bg-primary hover:bg-primary/80 text-white px-5 py-2.5 rounded-full text-sm font-medium shadow transition-all">
             <i class="fas fa-paper-plane"></i> Email Direct
           </a>
           <a href="https://wa.me/+8801839300033" target="_blank" class="inline-flex items-center gap-2 bg-emerald-600 hover:bg-emerald-700 text-white px-5 py-2.5 rounded-full text-sm font-medium shadow transition-all">
@@ -202,33 +196,24 @@
       </div>
     </div>
   </main>
-
-  <!-- Footer with copyright & simple links (no form) -->
-  <footer class="bg-gray-100/80 dark:bg-gray-900/80 backdrop-blur-sm border-t border-gray-200 dark:border-gray-800 text-center py-7 mt-10 text-gray-600 dark:text-gray-400 text-sm">
-    <div class="max-w-6xl mx-auto px-5 flex flex-col md:flex-row justify-between items-center gap-3">
-      <div class="flex gap-5 text-xs">
-        <a href="#" class="hover:text-primary dark:hover:text-secondary transition">Privacy</a>
-        <a href="#" class="hover:text-primary dark:hover:text-secondary transition">Terms</a>
-        <a href="#" class="hover:text-primary dark:hover:text-secondary transition">Accessibility</a>
-      </div>
-      <div class="flex items-center gap-2">
-        <i class="far fa-copyright text-xs"></i> <span>2026 MFS~Calc — Direct contact, zero friction.</span>
-      </div>
-      <div class="flex gap-3 text-gray-500">
-        <i class="fab fa-twitter hover:text-primary dark:hover:text-secondary cursor-pointer transition"></i>
-        <i class="fab fa-linkedin-in hover:text-primary dark:hover:text-secondary cursor-pointer transition"></i>
-      </div>
+<!-- Footer -->
+  <footer class="bg-gray-900 text-white py-8 text-center">
+    <p>&copy; 2026 MFS~calc. All Rights Reserved. Developed by <a href="https://nh-404.github.io" class="text-blue-400 hover:underline">Tasnimul Hasan</a></p>
+    <div class="social-links mt-4">
+      <a href="https://twitter.com/nh_404" class="text-2xl mx-3 hover:text-secondary transition"><i class="fab fa-twitter"></i></a>
+      <a href="https://t.me/nh_404" class="text-2xl mx-3 hover:text-secondary transition"><i class="fab fa-telegram"></i></a>
+      <a href="https://www.linkedin.com/in/nh404/" class="text-2xl mx-3 hover:text-secondary transition"><i class="fab fa-linkedin"></i></a>
     </div>
   </footer>
 
-  <!-- Dark Mode Toggle Script - Fix: preserves class and icons, correct synchronization -->
+
+  <!-- Dark Mode & Mobile Menu -->
   <script>
     (function() {
       const toggle = document.getElementById('themeToggle');
       const mobileMenuBtn = document.getElementById('menuBtn');
       const mobileMenu = document.getElementById('mobileMenu');
       
-      // Theme logic: check localStorage and system preference
       const root = document.documentElement;
       const isDarkStored = localStorage.getItem('theme') === 'dark';
       const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
@@ -242,7 +227,6 @@
         if (toggle) toggle.textContent = '🌙';
       }
       
-      // Toggle click handler
       if (toggle) {
         toggle.addEventListener('click', () => {
           const isDark = document.body.classList.toggle('dark');
@@ -251,21 +235,14 @@
         });
       }
       
-      // Mobile menu toggle (simple expand/collapse)
       if (mobileMenuBtn && mobileMenu) {
         mobileMenuBtn.addEventListener('click', () => {
           const isHidden = mobileMenu.classList.contains('hidden');
-          if (isHidden) {
-            mobileMenu.classList.remove('hidden');
-            mobileMenuBtn.textContent = '✕';
-          } else {
-            mobileMenu.classList.add('hidden');
-            mobileMenuBtn.textContent = '☰';
-          }
+          mobileMenu.classList.toggle('hidden');
+          mobileMenuBtn.textContent = isHidden ? '✕' : '☰';
         });
       }
-      
-      // Optional: close mobile menu on window resize if open
+
       window.addEventListener('resize', () => {
         if (window.innerWidth >= 768 && mobileMenu && !mobileMenu.classList.contains('hidden')) {
           mobileMenu.classList.add('hidden');
